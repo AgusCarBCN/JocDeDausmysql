@@ -1,6 +1,5 @@
 package carnerero.agustin.entity;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,28 +9,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Getter
 @Setter
-@Table(name="games")
+@Table(name = "games")
 
 public class Game {
 	@Id
-	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="WINNER",nullable=false)
-	private Boolean winner;
+	@Column(name = "winner")
+	private Boolean winner = false;
+	private int dado1;
+	private int dado2;
 	@ManyToOne
-    @JoinColumn(name = "FK_PLAYER", nullable = false, updatable = false)
-    private Player player;
+	@JsonIgnore
+	@JoinColumn(name = "idplayer",nullable=false)
+	private Player player;
+
+	public Game() {
+		
+	}
+	
+	
 }
