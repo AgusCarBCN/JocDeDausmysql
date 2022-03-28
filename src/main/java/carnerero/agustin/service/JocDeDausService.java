@@ -43,7 +43,7 @@ public class JocDeDausService {
 		return result;
 	}
 
-	// Obtiene de todas las tiradas de un jugador
+	// Obtiene  todas las tiradas de un jugador
 	public List<Game> getGamesByPlayer(Long id) {
 		Player player = getPlayer(id);
 		List<Game> games = gameRepo.findByPlayer(player);

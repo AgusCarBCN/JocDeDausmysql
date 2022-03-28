@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6332d8ae-37fd-4fe8-9f7f-6f2ccb2ff4e6",
+		"_postman_id": "31770e9d-0559-4629-8336-e0bb27e4efce",
 		"name": "JocDeDaus",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"date\":\"12/03/2021\",\n    \"name\":\"John\"\n}",
+					"raw": "{\n   \n    \"name\": \"Ana\",\n    \"date\": \"05/04/2021\"\n    \n    }\n   ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,11 +20,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8092/players",
+					"raw": "localhost:8080/players",
 					"host": [
 						"localhost"
 					],
-					"port": "8092",
+					"port": "8080",
 					"path": [
 						"players"
 					]
@@ -39,7 +39,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "\r\n    {\r\n        \"id\": 1,\r\n        \"name\": \"Agustin Carnerero\"\r\n        \r\n    }\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -47,11 +47,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8092/players",
+					"raw": "localhost:8080/players",
 					"host": [
 						"localhost"
 					],
-					"port": "8092",
+					"port": "8080",
 					"path": [
 						"players"
 					]
@@ -74,34 +74,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8092/players/1/games",
+					"raw": "localhost:8080/players/6/games",
 					"host": [
 						"localhost"
 					],
-					"port": "8092",
+					"port": "8080",
 					"path": [
 						"players",
-						"1",
-						"games"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Elimina tiradas de un jugador",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8092/players/1/games",
-					"host": [
-						"localhost"
-					],
-					"port": "8092",
-					"path": [
-						"players",
-						"1",
+						"6",
 						"games"
 					]
 				}
@@ -110,15 +90,22 @@
 		},
 		{
 			"name": "Listado de jugadores del sistema",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "localhost:8092/players/",
+					"raw": "localhost:8080/players/",
 					"host": [
 						"localhost"
 					],
-					"port": "8092",
+					"port": "8080",
 					"path": [
 						"players",
 						""
@@ -133,14 +120,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8092/players/1/games",
+					"raw": "localhost:8080/players/3/games",
 					"host": [
 						"localhost"
 					],
-					"port": "8092",
+					"port": "8080",
 					"path": [
 						"players",
-						"1",
+						"3",
 						"games"
 					]
 				}
@@ -153,11 +140,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8092/players/ranking",
+					"raw": "localhost:8080/players/ranking",
 					"host": [
 						"localhost"
 					],
-					"port": "8092",
+					"port": "8080",
 					"path": [
 						"players",
 						"ranking"
@@ -167,18 +154,62 @@
 			"response": []
 		},
 		{
-			"name": "El jugador con mejor porcentaje",
+			"name": "El jugador con peor porcentaje",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/players/ranking/loser",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"players",
+						"ranking",
+						"loser"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "El jugador con peor porcentaje",
+			"name": "El jugador con mejor porcentaje",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/players/ranking/winner",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"players",
+						"ranking",
+						"winner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borra tiradas de dados de jugador",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/players/2/games",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"players",
+						"2",
+						"games"
+					]
+				}
 			},
 			"response": []
 		}
