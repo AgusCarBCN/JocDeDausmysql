@@ -46,7 +46,7 @@ public class JocDeDausService {
 	// Obtiene  todas las tiradas de un jugador
 	public List<Game> getGamesByPlayer(Long id) {
 		Player player = getPlayer(id);
-		List<Game> games = gameRepo.findByPlayer(player);
+		List<Game> games = gameRepo.findAllByPlayer(player);
 		return games;
 	}
 	// Elimina todas las tiradas de un jugador
