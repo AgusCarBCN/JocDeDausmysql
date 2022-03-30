@@ -11,18 +11,21 @@ import carnerero.agustin.exceptions.PlayerNotFoundException;
 import carnerero.agustin.repository.GameRepository;
 import carnerero.agustin.repository.PlayerRepository;
 
+
 @Service
 public class JocDeDausService {
 	@Autowired
 	private PlayerRepository playerRepo;
 	@Autowired
 	private GameRepository gameRepo;
-
+	
 	// Crea un jugador
 	public Player createPlayer(Player player) {
 		Player newPlayer = playerRepo.save(player);
 		return newPlayer;
 	}
+	
+	
 
 	// Lista todos los jugadores
 	public List<Player> getPlayers() {
