@@ -35,16 +35,14 @@ public class Player {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "name", nullable = false, unique = true)
-	private String name;
-	@Column(name="password",nullable=false)
-	private String password;	
+	private String name;	
 	@Column(name = "date", nullable = false)	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Past
 	private Date date;
-	@Column(name="rol",nullable=false)
-	@Enumerated(EnumType.STRING)
-	private Rol rol;
+	
+	@Column(name="activo")
+	private boolean activo;
 	@Column(name="wingames")
 	private Double winGames ;
 	@Column(name="lostgames")
@@ -59,15 +57,14 @@ public class Player {
 		average=0.0;
 		totalGames=0.0;
 		name="ANONIM";
+		activo=false;
 	}
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
 	private List<Game> games;
 
-	public Player(String name,Rol rol,String password, Date date) {
-		this.name = name;
-		this.rol=rol;
-		this.password=password;
+	public Player(String name, Date date) {
+		this.name = name;		
 		this.date = date;
 		
 	}

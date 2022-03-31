@@ -11,21 +11,18 @@ import carnerero.agustin.exceptions.PlayerNotFoundException;
 import carnerero.agustin.repository.GameRepository;
 import carnerero.agustin.repository.PlayerRepository;
 
-
 @Service
 public class JocDeDausService {
 	@Autowired
 	private PlayerRepository playerRepo;
 	@Autowired
 	private GameRepository gameRepo;
-	
+
 	// Crea un jugador
 	public Player createPlayer(Player player) {
 		Player newPlayer = playerRepo.save(player);
 		return newPlayer;
 	}
-	
-	
 
 	// Lista todos los jugadores
 	public List<Player> getPlayers() {
@@ -46,7 +43,7 @@ public class JocDeDausService {
 		return result;
 	}
 
-	// Obtiene  todas las tiradas de un jugador
+	// Obtiene todas las tiradas de un jugador
 	public List<Game> getGamesByPlayer(Long id) {
 		Player player = getPlayer(id);
 		List<Game> games = gameRepo.findAllByPlayer(player);
@@ -55,78 +52,78 @@ public class JocDeDausService {
 	// Elimina todas las tiradas de un jugador
 
 	public List<Game> deleteGamesByPlayer(Long id) {
-		List<Game> games = getGamesByPlayer(id);		
-		gameRepo.deleteAll(games);		
+		List<Game> games = getGamesByPlayer(id);
+		gameRepo.deleteAll(games);
 		return games;
 	}
 
 	// Crea una jugada
 	@Transactional
-	public Game createGame(Long id,Game game) {
+	public Game createGame(Long id, Game game) {
 		Player player = getPlayer(id);
-		double average=0.0;
+		double average = 0.0;
 		game.setPlayer(player);
-		game.setDado1((int) (Math.random() * 6 + 1));
-		game.setDado2((int) (Math.random() * 6 + 1));		
-		if(game.getDado1()+game.getDado2()==7) {
+		game.setDice1((int) (Math.random() * 6 + 1));
+		game.setDice2((int) (Math.random() * 6 + 1));
+		if (game.getDice1() + game.getDice2() == 7) {
 			game.setWinner(true);
 			player.setWinGames();
-		}else {
+		} else {
 			player.setLostGames();
 		}
 		player.setTotalGames();
-		average=(player.getWinGames()/player.getTotalGames())*100;
+		average = (player.getWinGames() / player.getTotalGames()) * 100;
 		player.setAverage(average);
 		gameRepo.save(game);
 		return game;
 	}
 
-	//Modifica nombre de jugador
+	// Modifica nombre de jugador
 	@Transactional
 	public Player updatePlayerName(Player playerUpdated) {
-		Player player=getPlayer(playerUpdated.getId());
+		Player player = getPlayer(playerUpdated.getId());
 		player.setName(playerUpdated.getName());
 		return playerUpdated;
 	}
-	
+
 	// Porcentaje medio de jugadores
 	public double averageRanking() {
 		List<Player> players = getPlayers();
-		int playersNum=players.size();
-		double averageSum = 0.0;		
+		int playersNum = players.size();
+		double averageSum = 0.0;
 		for (Player player : players) {
 			averageSum += player.getAverage();
 		}
-				
-		return averageSum/playersNum;
+
+		return averageSum / playersNum;
 	}
 
 	// Retorna el mejor jugador
-		public Player theBestPlayer() {
-			List<Player> players = getPlayers();
-			Player theBest = null;
-			double hightAverage =  0.0;
-			for (Player player : players) {
-				if (player.getAverage()>hightAverage) {
-					hightAverage = player.getAverage();
-					theBest = player;
-				}
+	public Player theBestPlayer() {
+		List<Player> players = getPlayers();
+		Player theBest = null;
+		double hightAverage = 0.0;
+		for (Player player : players) {
+			if (player.getAverage() > hightAverage) {
+				hightAverage = player.getAverage();
+				theBest = player;
 			}
-			return theBest;
 		}
+		return theBest;
+	}
 
-	//Retorna el peor jugador
-		public Player theWorstPlayer() {
-			List<Player> players = getPlayers();
-			Player theWorst = null;
-			double LowAverage =  100.0;
-			for (Player player : players) {
-				if (player.getAverage() < LowAverage) {
-					LowAverage = player.getAverage();
-					theWorst = player;
-				}
+	// Retorna el peor jugador
+	public Player theWorstPlayer() {
+		List<Player> players = getPlayers();
+		Player theWorst = null;
+		double LowAverage = 100.0;
+		for (Player player : players) {
+			if (player.getAverage() < LowAverage) {
+				LowAverage = player.getAverage();
+				theWorst = player;
 			}
-			return theWorst;
 		}
-		
+		return theWorst;
+	}
+
 }

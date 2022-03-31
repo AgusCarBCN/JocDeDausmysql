@@ -12,7 +12,7 @@ public class PlayerDTO {
 
 	private Long id;
 	private String name;
-	private Rol rol;
+	private String rol;
 	private Double winGames;
 	private Double lostGames;
 	private Double average;
