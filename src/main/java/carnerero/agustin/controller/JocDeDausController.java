@@ -42,12 +42,12 @@ public class JocDeDausController {
 
 	// Crear jugador
 	//@PreAuthorize("hasRole('ADMIN')")
+	
 	@PostMapping("/players")
 	public ResponseEntity<PlayerDTO> createPayer(@RequestBody Player player) {
 		Player newPlayer = service.createPlayer(player);
 		PlayerDTO playerDTO =playerConverter.fromEntity(newPlayer);
 		return new ResponseEntity<PlayerDTO>(playerDTO, HttpStatus.CREATED);
-
 	}
 
 	// Modifica el nombre del jugador
