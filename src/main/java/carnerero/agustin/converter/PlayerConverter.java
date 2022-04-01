@@ -16,8 +16,10 @@ public class PlayerConverter extends AbstractConverter<Player,PlayerDTO>{
 				totalGames(entity.getTotalGames()).build();
 	}
 
+	
+
 	@Override
-	public Player fromDTO(Player dto) {
+	public Player fromDTO(PlayerDTO dto) {
 		return Player.builder().
 				id(dto.getId()).
 				name(dto.getName()).				
@@ -25,7 +27,6 @@ public class PlayerConverter extends AbstractConverter<Player,PlayerDTO>{
 				lostGames(dto.getLostGames()).
 				average(dto.getAverage()).
 				totalGames(dto.getTotalGames()).build();
-		
 	}
 
 }

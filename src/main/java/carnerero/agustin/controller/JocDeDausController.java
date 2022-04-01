@@ -53,8 +53,8 @@ public class JocDeDausController {
 	// Modifica el nombre del jugador
 	//@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/players")
-	public ResponseEntity<PlayerDTO> modifyPlayerName(@RequestBody Player player) {
-		Player updatedPlayer = service.updatePlayerName(player);
+	public ResponseEntity<PlayerDTO> modifyPlayerName(@RequestBody PlayerDTO player) {
+		Player updatedPlayer = service.updatePlayerName(playerConverter.fromDTO(player));
 		PlayerDTO updatedPlayerDTO = playerConverter.fromEntity(updatedPlayer);
 		return new ResponseEntity<PlayerDTO>(updatedPlayerDTO, HttpStatus.CREATED);
 

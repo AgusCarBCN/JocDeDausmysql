@@ -1,6 +1,6 @@
 package carnerero.agustin.dto;
 
-import carnerero.agustin.entity.Rol;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,6 @@ public class PlayerDTO {
 
 	private Long id;
 	private String name;
-	private String rol;
 	private Double winGames;
 	private Double lostGames;
 	private Double average;

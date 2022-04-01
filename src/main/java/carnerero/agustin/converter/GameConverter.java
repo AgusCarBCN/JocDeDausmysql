@@ -11,10 +11,11 @@ public class GameConverter extends AbstractConverter<Game, GameDTO> {
 				.dice2(entity.getDice2()).result(entity.getResult()).build();
 	}
 
+	
 	@Override
-	public Game fromDTO(Game dto) {
+	public Game fromDTO(GameDTO dto) {
 		return Game.builder().id(dto.getId()).winner(dto.getWinner()).dice1(dto.getDice1()).dice2(dto.getDice2())
 				.result(dto.getResult()).build();
-	}
 
+}
 }

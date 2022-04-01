@@ -41,8 +41,6 @@ public class Player {
 	@Past
 	private Date date;
 	
-	@Column(name="activo")
-	private boolean activo;
 	@Column(name="wingames")
 	private Double winGames ;
 	@Column(name="lostgames")
@@ -56,8 +54,8 @@ public class Player {
 		lostGames=0.0;
 		average=0.0;
 		totalGames=0.0;
-		name="ANONIM";
-		activo=false;
+		name="ANONIM";		
+		date=new Date();
 	}
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
@@ -65,8 +63,8 @@ public class Player {
 
 	public Player(String name, Date date) {
 		this.name = name;		
-		this.date = date;
 		
+		this.date=new Date();
 	}
 	
 	

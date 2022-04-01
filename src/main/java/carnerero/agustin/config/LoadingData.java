@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import carnerero.agustin.entity.Game;
 import carnerero.agustin.entity.Player;
-import carnerero.agustin.entity.Rol;
+
 import carnerero.agustin.service.JocDeDausService;
 
 @Configuration

@@ -80,10 +80,11 @@ public class JocDeDausService {
 
 	// Modifica nombre de jugador
 	@Transactional
-	public Player updatePlayerName(Player playerUpdated) {
-		Player player = getPlayer(playerUpdated.getId());
-		player.setName(playerUpdated.getName());
-		return playerUpdated;
+	public Player updatePlayerName(Player player) {
+		Player updatedPlayer = getPlayer(player.getId());
+		updatedPlayer.setName(player.getName());
+		playerRepo.save(updatedPlayer);
+		return updatedPlayer;
 	}
 
 	// Porcentaje medio de jugadores
