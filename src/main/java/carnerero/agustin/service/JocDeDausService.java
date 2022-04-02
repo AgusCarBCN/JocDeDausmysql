@@ -23,7 +23,6 @@ public class JocDeDausService {
 		Player newPlayer = playerRepo.save(player);
 		return newPlayer;
 	}
-
 	// Lista todos los jugadores
 	public List<Player> getPlayers() {
 		List<Player> players = playerRepo.findAll();

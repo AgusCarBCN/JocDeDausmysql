@@ -36,12 +36,12 @@ public class JocDeDausController {
 	public ResponseEntity<PlayerDTO> getPlayer(@PathVariable(value = "id") Long idPlayer) {
 		Player player = service.getPlayer(idPlayer);
 		PlayerDTO playerDTO = playerConverter.fromEntity(player);
-		return new ResponseEntity<PlayerDTO>(playerDTO, HttpStatus.OK);
+	 	return new ResponseEntity<PlayerDTO>(playerDTO, HttpStatus.OK);
 
 	}
 
 	// Crear jugador
-	//@PreAuthorize("hasRole('ADMIN')")
+	
 	
 	@PostMapping("/players")
 	public ResponseEntity<PlayerDTO> createPayer(@RequestBody Player player) {

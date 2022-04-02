@@ -1,6 +1,6 @@
 package carnerero.agustin.config;
 
-
+/*
 import java.util.Date;
 
 import org.springframework.boot.CommandLineRunner;
@@ -10,20 +10,20 @@ import carnerero.agustin.entity.Game;
 import carnerero.agustin.entity.Player;
 
 import carnerero.agustin.service.JocDeDausService;
-
+/*
 @Configuration
 public class LoadingData {
 	@Bean
 	public CommandLineRunner loadData(JocDeDausService service) {
 		return (args) -> {
 			
-			service.createPlayer(new Player("Agustin", new Date()));
-			service.createPlayer(new Player("Salva", new Date()));
-			service.createPlayer(new Player("Adela", new Date()));
-			service.createPlayer(new Player("Jose", new Date()));
-			service.createPlayer(new Player("Manolo", new Date()));
+			service.createPlayer(new Player("Agustin"));
+			service.createPlayer(new Player("Salva"));		
+			service.createPlayer(new Player("Adela"));
+			service.createPlayer(new Player("Jose"));
+			service.createPlayer(new Player("Manolo"));
 			
-			service.createGame(1L,new Game());
+		service.createGame(1L,new Game());
 			service.createGame(1L,new Game());
 			service.createGame(1L,new Game());
 			service.createGame(1L,new Game());
@@ -88,4 +88,4 @@ public class LoadingData {
 			service.createGame(5L,new Game());
 		};
 	}
-}
+}*/

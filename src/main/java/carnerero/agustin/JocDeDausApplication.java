@@ -33,7 +33,7 @@ public class JocDeDausApplication extends SpringBootServletInitializer
 					.antMatchers(HttpMethod.POST, "/user").permitAll()
 
 					.antMatchers(HttpMethod.GET, "/").permitAll()
-
+					.antMatchers(HttpMethod.GET,"/h2-console").permitAll()
 					.antMatchers(HttpMethod.GET, "/players", "/players/", "/players/ranking", "/players/**", "/players/ranking/loser", "/players/ranking/winner").authenticated()
 					.antMatchers(HttpMethod.POST, "/players").authenticated()
 					.antMatchers(HttpMethod.PUT, "/players").authenticated()

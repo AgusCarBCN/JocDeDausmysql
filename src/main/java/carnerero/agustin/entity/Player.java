@@ -57,11 +57,11 @@ public class Player {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
 	private List<Game> games;
 
-	public Player(String name, Date date) {
+	public Player(String name) {
 		this.name = name;
 
 		this.date = new Date();
-	}
+	} 
 
 	public void setWinGames() {
 		this.winGames += 1;
