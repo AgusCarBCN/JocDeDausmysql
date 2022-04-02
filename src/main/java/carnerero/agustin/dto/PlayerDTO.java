@@ -16,9 +16,9 @@ public class PlayerDTO {
 
 	private Long id;
 	private String name;
-	private Double winGames;
-	private Double lostGames;
-	private Double average;
-	private Double totalGames;
+	private int winGames;
+	private int lostGames;
+	private double average;
+	private int totalGames;
 
 }

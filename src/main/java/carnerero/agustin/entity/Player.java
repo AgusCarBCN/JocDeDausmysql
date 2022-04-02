@@ -38,18 +38,18 @@ public class Player {
 	private Date date;
 
 	@Column(name = "wingames")
-	private Double winGames;
+	private int winGames;
 	@Column(name = "lostgames")
-	private Double lostGames;
+	private int lostGames;
 	@Column(name = "average")
-	private Double average;
+	private double average;
 	@Column(name = "totalgames")
-	private Double totalGames;
+	private int totalGames;
 	{
-		winGames = 0.0;
-		lostGames = 0.0;
+		winGames = 0;
+		lostGames = 0;
 		average = 0.0;
-		totalGames = 0.0;
+		totalGames = 0;
 		name = "ANONIM";
 		date = new Date();
 	}

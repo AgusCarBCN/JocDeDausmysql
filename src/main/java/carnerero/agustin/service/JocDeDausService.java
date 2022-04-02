@@ -72,7 +72,7 @@ public class JocDeDausService {
 			player.setLostGames();
 		}
 		player.setTotalGames();
-		average = (player.getWinGames() / player.getTotalGames()) * 100;
+		average = ((double)player.getWinGames() /(double) player.getTotalGames()) * 100;
 		player.setAverage(average);
 		gameRepo.save(game);
 		return game;
