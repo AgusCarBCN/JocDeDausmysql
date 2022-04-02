@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "31770e9d-0559-4629-8336-e0bb27e4efce",
+		"_postman_id": "51d6a4ea-6b9d-43cb-bf9d-8c5a32077f14",
 		"name": "JocDeDaus",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -326,12 +326,7 @@
 							"type": "default",
 							"disabled": true
 						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					]
 				},
 				"url": {
 					"raw": "localhost:8080/players/1",
