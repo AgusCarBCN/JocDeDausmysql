@@ -26,6 +26,7 @@ public class UserController {
 		user.setToken(token);
 		return user;
 
+		 
 	}
 
 	private String getJWTToken(String username) {
