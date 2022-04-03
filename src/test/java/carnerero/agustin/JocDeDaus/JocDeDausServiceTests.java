@@ -50,7 +50,7 @@ class JocDeDausServiceTests {
 	public void upDatePlayerName() {
 		Player player=service.getPlayer(1L);	
 		String nameBefore=player.getName();
-		player.setName("Manolo");
+		player.setName("Paco");
 		service.updatePlayerName(player);		
 		assertNotEquals(nameBefore,player.getName());
 	}
@@ -61,9 +61,23 @@ class JocDeDausServiceTests {
 	}
 	@Test
 	public void deleteGamesByPlayer() {
-		List<Game>games=service.getGamesByPlayer(1L);
 		service.deleteGamesByPlayer(1L);
+		List<Game>games=service.getGamesByPlayer(1L);
 		assertThat(games).size().isEqualTo(0);
 	}
-	
+	@Test
+	public void averagePlayer() {
+		double average=service.averageRanking();
+		assertThat(average).isGreaterThanOrEqualTo(0);
+	}
+	@Test
+	public void getTheBestPlayer() {
+		Player player=service.theBestPlayer();
+		assertNotNull(player);
+	}
+	@Test
+	public void getTheWorstPlayer() {
+		Player player=service.theWorstPlayer();
+		assertNotNull(player);
+	}
 }
