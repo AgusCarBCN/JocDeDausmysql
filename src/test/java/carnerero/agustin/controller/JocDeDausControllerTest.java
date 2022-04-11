@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import carnerero.agustin.converter.GameConverter;
+import carnerero.agustin.converter.PlayerConverter;
 import carnerero.agustin.entity.Game;
 import carnerero.agustin.entity.Player;
 import carnerero.agustin.service.JocDeDausService;
@@ -21,7 +24,10 @@ private MockMvc mockMvc;
 
 @MockBean
 private JocDeDausService service;
-
+@MockBean
+private PlayerConverter playerConverter;
+@MockBean
+private GameConverter gameConverter;
 
 @Test
 public void listPlayersTest() throws Exception {

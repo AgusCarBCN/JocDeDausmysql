@@ -110,18 +110,18 @@ public class JocDeDausController {
 	// Retorna el jugador con mejor ranking
 
 	@GetMapping("/players/ranking/winner")
-	public ResponseEntity<PlayerDTO> getTheBestPlayer() {
-		Player player = service.theBestPlayer();
-		PlayerDTO theBestPlayerDTO = playerConverter.fromEntity(player);
-		return new ResponseEntity<PlayerDTO>(theBestPlayerDTO, HttpStatus.OK);
+	public ResponseEntity<List<PlayerDTO>> getTheBestPlayer() {
+		List<Player> players = service.theBestPlayer();
+		List<PlayerDTO> theBestPlayerDTO = playerConverter.fromEntity(players);
+		return new ResponseEntity<List<PlayerDTO>>(theBestPlayerDTO, HttpStatus.OK);
 	}
 	// Retorna el jugador con peor ranking
 
 	@GetMapping("/players/ranking/loser")
-	public ResponseEntity<PlayerDTO> getTheWorstPlayer() {
-		Player player = service.theWorstPlayer();
-		PlayerDTO theWorstPlayerDTO = playerConverter.fromEntity(player);
-		return new ResponseEntity<PlayerDTO>(theWorstPlayerDTO, HttpStatus.OK);
+	public ResponseEntity<List<PlayerDTO>> getTheWorstPlayer() {
+		List<Player> players = service.theWorstPlayer();
+		List<PlayerDTO> theWorstPlayerDTO = playerConverter.fromEntity(players);
+		return new ResponseEntity<List<PlayerDTO>>(theWorstPlayerDTO, HttpStatus.OK);
 	}
 
 }

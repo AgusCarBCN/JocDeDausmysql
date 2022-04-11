@@ -127,16 +127,16 @@ class JocDeDausServiceTests {
 	@Order(9)
 	@DisplayName("Get the best player testing")
 	void getTheBestPlayerTest() {
-		Player player = service.theBestPlayer();
-		assertNotNull(player);
+		List<Player> players = service.theBestPlayer();
+		assertNotNull(players);
 	}
 
 	@Test
 	@DisplayName("Get the worst player testing")
 	@Order(10)
 	void getTheWorstPlayer() {
-		Player player = service.theWorstPlayer();
-		assertNotNull(player);
+		List<Player> players = service.theWorstPlayer();
+		assertNotNull(players);
 	}
 
 }

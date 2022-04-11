@@ -287,7 +287,7 @@
 			"response": []
 		},
 		{
-			"name": "El jugador con peor porcentaje",
+			"name": "El jugador o jugadores con peor porcentaje",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -323,7 +323,7 @@
 			"response": []
 		},
 		{
-			"name": "El jugador con mejor porcentaje",
+			"name": "El jugador o jugadores con mejor porcentaje",
 			"request": {
 				"auth": {
 					"type": "bearer",

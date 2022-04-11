@@ -1,5 +1,6 @@
 package carnerero.agustin.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,18 +23,19 @@ public class JocDeDausService {
 	public Player createPlayer(Player player) {
 		Player newPlayer = playerRepo.save(player);
 		return newPlayer;
-	} 
-	// Lista todos los jugadores 
-	public List<Player> getPlayers() { 
+	}
+
+	// Lista todos los jugadores
+	public List<Player> getPlayers() {
 		List<Player> players = playerRepo.findAll();
 		return players;
-	} 
- 
+	}
+
 	// Obtiene un jugador del sistema
 	public Player getPlayer(Long id) {
 		Player player = playerRepo.findById(id).orElseThrow(() -> new PlayerNotFoundException(id));
-		return player; 
-	} 
+		return player;
+	}
 
 	// Cuenta todos los jugadores del sistema
 	public int countAllPlayers() {
@@ -55,7 +57,7 @@ public class JocDeDausService {
 		gameRepo.deleteAll(games);
 		return games;
 	}
- 
+
 	// Crea una jugada
 	@Transactional
 	public Game createGame(Long id, Game game) {
@@ -67,18 +69,18 @@ public class JocDeDausService {
 		game.setPlayer(player);
 		game.setDice1((int) (Math.random() * 6 + 1));
 		game.setDice2((int) (Math.random() * 6 + 1));
-		game.setResult(game.getDice1()+game.getDice2());
+		game.setResult(game.getDice1() + game.getDice2());
 		if (game.getDice1() + game.getDice2() == 7) {
 			game.setWinner(true);
-			winGames=player.getWinGames()+1;
+			winGames = player.getWinGames() + 1;
 			player.setWinGames(winGames);
-		} else { 
-			lostGames=player.getLostGames()+1; 
+		} else {
+			lostGames = player.getLostGames() + 1;
 			player.setLostGames(lostGames);
 		}
-		totalGames=player.getTotalGames()+1;
+		totalGames = player.getTotalGames() + 1;
 		player.setTotalGames(totalGames);
-		average = ((double)player.getWinGames() /(double) player.getTotalGames()) * 100;
+		average = ((double) player.getWinGames() / (double) player.getTotalGames()) * 100;
 		player.setAverage(average);
 		playerRepo.save(player);
 		gameRepo.save(game);
@@ -106,10 +108,12 @@ public class JocDeDausService {
 		return averageSum / playersNum;
 	}
 
-	// Retorna el mejor jugador
-	public Player theBestPlayer() {
+	// Retorna el mejor jugador o los mejores jugadores del sistema si hay un empate.Por eso devuelvo una lista.
+	public List<Player> theBestPlayer() {
 		List<Player> players = getPlayers();
-		Player theBest = null;
+		List<Player> playersb=new ArrayList<>();
+		Player theBest=null;
+		playersb.removeAll(playersb);
 		double hightAverage = 0.0;
 		for (Player player : players) {
 			if (player.getAverage() > hightAverage) {
@@ -117,12 +121,21 @@ public class JocDeDausService {
 				theBest = player;
 			}
 		}
-		return theBest;
+		for (Player p : players) {
+			if (p.getAverage() == theBest.getAverage()) {
+				playersb.add(p);
+			}
+		}
+	
+	return playersb;
+		
 	}
 
-	// Retorna el peor jugador
-	public Player theWorstPlayer() {
+	// Retorna el peor jugador o los peores jugadores del sistema si hay un empate.Por eso devuelvo una lista.
+	public List<Player> theWorstPlayer() {
 		List<Player> players = getPlayers();
+		List<Player> playersw=new ArrayList<>();
+		playersw.removeAll(playersw);
 		Player theWorst = null;
 		double LowAverage = 100.0;
 		for (Player player : players) {
@@ -131,7 +144,13 @@ public class JocDeDausService {
 				theWorst = player;
 			}
 		}
-		return theWorst;
+		for (Player p : players) {
+				if (p.getAverage() == theWorst.getAverage()) {
+					playersw.add(p);
+				}
+			}
+		
+		return playersw;
 	}
 
 }
