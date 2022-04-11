@@ -37,9 +37,9 @@ public class Game {
 	private Player player;
 
 	public Game() {
-		winner=false;
+		winner=false; 
 		
-	}
+	} 
 
 	
 	

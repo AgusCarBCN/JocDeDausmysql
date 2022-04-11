@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder 
 public class GameDTO {
 	private Long id;		
 	private Boolean winner ;	

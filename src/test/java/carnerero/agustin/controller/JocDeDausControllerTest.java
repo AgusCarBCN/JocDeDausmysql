@@ -26,8 +26,8 @@ private JocDeDausService service;
 @Test
 public void listPlayersTest() throws Exception {
 	List<Player> players = service.getPlayers();
-	Player player1 = new Player("player1");
-	Player player2 = new Player("player2");
+	Player player1 = new Player("player1"); 
+	Player player2 = new Player("player2"); 
 	players.add(player1);  
 	players.add(player2);
 	Mockito.when(service.getPlayers()).thenReturn(players);

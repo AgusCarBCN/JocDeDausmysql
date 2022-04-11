@@ -25,7 +25,7 @@ public class UserController {
 		user.setUser(username);
 		user.setToken(token);
 		return user;
-
+ 
 		 
 	}
 

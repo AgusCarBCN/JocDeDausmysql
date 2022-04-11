@@ -14,7 +14,7 @@ import carnerero.agustin.security.JWTAuthorizationFilter;
 
 @SpringBootApplication
 public class JocDeDausApplication extends SpringBootServletInitializer
-{
+{ 
 
 	public static void main(String[] args) {
 		SpringApplication.run(JocDeDausApplication.class, args);

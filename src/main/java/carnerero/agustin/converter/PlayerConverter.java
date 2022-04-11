@@ -1,8 +1,10 @@
 package carnerero.agustin.converter;
 
+import org.springframework.stereotype.Component;
+
 import carnerero.agustin.dto.PlayerDTO;
 import carnerero.agustin.entity.Player;
-
+@Component
 public class PlayerConverter extends AbstractConverter<Player,PlayerDTO>{
 
 	@Override

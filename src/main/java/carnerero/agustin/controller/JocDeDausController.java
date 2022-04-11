@@ -25,21 +25,21 @@ import carnerero.agustin.service.JocDeDausService;
 public class JocDeDausController {
 	@Autowired
 	private JocDeDausService service;
-	
-	private PlayerConverter playerConverter=new PlayerConverter();
-	
-	private GameConverter gameConverter=new GameConverter();
+	@Autowired
+	private PlayerConverter playerConverter;
+	@Autowired
+	private GameConverter gameConverter;
 
 	// Lista un jugador del sistema
-	
+	 
 	@GetMapping("/players/{id}")
 	public ResponseEntity<PlayerDTO> getPlayer(@PathVariable(value = "id") Long idPlayer) {
 		Player player = service.getPlayer(idPlayer);
 		PlayerDTO playerDTO = playerConverter.fromEntity(player);
 	 	return new ResponseEntity<PlayerDTO>(playerDTO, HttpStatus.OK);
-
+	 	
 	}
-
+ 
 	// Crear jugador
 	
 	

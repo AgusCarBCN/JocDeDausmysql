@@ -21,7 +21,7 @@ public class PlayerNotFoundException extends RuntimeException {
 	public PlayerNotFoundException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
-	}
+	} 
 
 	public PlayerNotFoundException(String message) {
 		super(message);
@@ -29,7 +29,7 @@ public class PlayerNotFoundException extends RuntimeException {
 	}
 
 	public PlayerNotFoundException(Throwable cause) {
-		super(cause);
+		super(cause); 
 		// TODO Auto-generated constructor stub
 	}
 

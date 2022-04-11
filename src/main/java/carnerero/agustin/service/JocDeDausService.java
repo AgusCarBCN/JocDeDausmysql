@@ -22,18 +22,18 @@ public class JocDeDausService {
 	public Player createPlayer(Player player) {
 		Player newPlayer = playerRepo.save(player);
 		return newPlayer;
-	}
-	// Lista todos los jugadores
-	public List<Player> getPlayers() {
+	} 
+	// Lista todos los jugadores 
+	public List<Player> getPlayers() { 
 		List<Player> players = playerRepo.findAll();
 		return players;
-	}
-
+	} 
+ 
 	// Obtiene un jugador del sistema
 	public Player getPlayer(Long id) {
 		Player player = playerRepo.findById(id).orElseThrow(() -> new PlayerNotFoundException(id));
-		return player;
-	}
+		return player; 
+	} 
 
 	// Cuenta todos los jugadores del sistema
 	public int countAllPlayers() {
@@ -55,24 +55,32 @@ public class JocDeDausService {
 		gameRepo.deleteAll(games);
 		return games;
 	}
-
+ 
 	// Crea una jugada
 	@Transactional
 	public Game createGame(Long id, Game game) {
 		Player player = getPlayer(id);
 		double average = 0.0;
+		int winGames;
+		int lostGames;
+		int totalGames;
 		game.setPlayer(player);
 		game.setDice1((int) (Math.random() * 6 + 1));
 		game.setDice2((int) (Math.random() * 6 + 1));
+		game.setResult(game.getDice1()+game.getDice2());
 		if (game.getDice1() + game.getDice2() == 7) {
 			game.setWinner(true);
-			player.setWinGames();
-		} else {
-			player.setLostGames();
+			winGames=player.getWinGames()+1;
+			player.setWinGames(winGames);
+		} else { 
+			lostGames=player.getLostGames()+1; 
+			player.setLostGames(lostGames);
 		}
-		player.setTotalGames();
+		totalGames=player.getTotalGames()+1;
+		player.setTotalGames(totalGames);
 		average = ((double)player.getWinGames() /(double) player.getTotalGames()) * 100;
 		player.setAverage(average);
+		playerRepo.save(player);
 		gameRepo.save(game);
 		return game;
 	}
