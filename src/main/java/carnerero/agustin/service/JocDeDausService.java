@@ -111,7 +111,7 @@ public class JocDeDausService {
 	// Retorna el mejor jugador o los mejores jugadores del sistema si hay un empate.Por eso devuelvo una lista.
 	public List<Player> theBestPlayer() {
 		List<Player> players = getPlayers();
-		List<Player> playersb=new ArrayList<>();		
+		List<Player> playersb=new ArrayList<>();
 		playersb.removeAll(playersb);
 		double hightAverage = 0.0;
 		for (Player player : players) {
