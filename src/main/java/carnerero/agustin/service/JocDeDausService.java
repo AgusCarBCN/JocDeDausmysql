@@ -63,7 +63,7 @@ public class JocDeDausService {
 	public Game createGame(Long id, Game game) {
 		Player player = getPlayer(id);
 		double average = 0.0;
-		double raverage=0.0;
+		double raverage = 0.0;
 		int winGames;
 		int lostGames;
 		int totalGames;
@@ -82,7 +82,7 @@ public class JocDeDausService {
 		totalGames = player.getTotalGames() + 1;
 		player.setTotalGames(totalGames);
 		average = ((double) player.getWinGames() / (double) player.getTotalGames()) * 100;
-		average=Math.round(average*100.0)/100.0;
+		average = Math.round(average * 100.0) / 100.0;
 		player.setAverage(average);
 		playerRepo.save(player);
 		gameRepo.save(game);
@@ -115,13 +115,17 @@ public class JocDeDausService {
 	public List<Player> theBestPlayer() {
 		List<Player> players = getPlayers();
 		List<Player> playersb = new ArrayList<>();
+
 		playersb.removeAll(playersb);
 		double hightAverage = 0.0;
 		for (Player player : players) {
 			if (player.getAverage() > hightAverage) {
 				hightAverage = player.getAverage();
+
 			}
+
 		}
+
 		for (Player p : players) {
 			if (p.getAverage() == hightAverage) {
 				playersb.add(p);
@@ -148,6 +152,7 @@ public class JocDeDausService {
 		for (Player p : players) {
 			if (p.getAverage() == LowAverage) {
 				playersw.add(p);
+
 			}
 		}
 

@@ -38,7 +38,7 @@ public class Player {
 	@Column(name = "date", nullable = false)
 	@JsonFormat(pattern = "dd/MM/yyyy")	
 	@Temporal(TemporalType.DATE)
-	private Date date;
+	private Date dateReg;
 	@Column(name = "wingames")
 	private int winGames;
 	@Column(name = "lostgames")
@@ -51,7 +51,7 @@ public class Player {
 		Random rnd = new Random();
 		id = rnd.nextLong(100000);
 		name = "ANONYMOUS";
-		date = new Date();
+		dateReg = new Date();
 	}
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
