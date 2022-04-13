@@ -11,7 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Past;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -34,12 +35,10 @@ public class Player {
 	private Long id;
 	@Column(name = "name", nullable = false)
 	private String name;
-
 	@Column(name = "date", nullable = false)
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Past
+	@JsonFormat(pattern = "dd/MM/yyyy")	
+	@Temporal(TemporalType.DATE)
 	private Date date;
-
 	@Column(name = "wingames")
 	private int winGames;
 	@Column(name = "lostgames")

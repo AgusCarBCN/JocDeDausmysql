@@ -63,6 +63,7 @@ public class JocDeDausService {
 	public Game createGame(Long id, Game game) {
 		Player player = getPlayer(id);
 		double average = 0.0;
+		double raverage=0.0;
 		int winGames;
 		int lostGames;
 		int totalGames;
@@ -81,6 +82,7 @@ public class JocDeDausService {
 		totalGames = player.getTotalGames() + 1;
 		player.setTotalGames(totalGames);
 		average = ((double) player.getWinGames() / (double) player.getTotalGames()) * 100;
+		average=Math.round(average*100.0)/100.0;
 		player.setAverage(average);
 		playerRepo.save(player);
 		gameRepo.save(game);
@@ -108,48 +110,47 @@ public class JocDeDausService {
 		return averageSum / playersNum;
 	}
 
-	// Retorna el mejor jugador o los mejores jugadores del sistema si hay un empate.Por eso devuelvo una lista.
+	// Retorna el mejor jugador o los mejores jugadores del sistema si hay un
+	// empate.Por eso devuelvo una lista.
 	public List<Player> theBestPlayer() {
 		List<Player> players = getPlayers();
-		List<Player> playersb=new ArrayList<>();
-		Player theBest=null;
+		List<Player> playersb = new ArrayList<>();
 		playersb.removeAll(playersb);
 		double hightAverage = 0.0;
 		for (Player player : players) {
 			if (player.getAverage() > hightAverage) {
 				hightAverage = player.getAverage();
-				theBest = player;
 			}
 		}
 		for (Player p : players) {
-			if (p.getAverage() == theBest.getAverage()) {
+			if (p.getAverage() == hightAverage) {
 				playersb.add(p);
 			}
 		}
-	
-	return playersb;
-		
+
+		return playersb;
+
 	}
 
-	// Retorna el peor jugador o los peores jugadores del sistema si hay un empate.Por eso devuelvo una lista.
+	// Retorna el peor jugador o los peores jugadores del sistema si hay un
+	// empate.Por eso devuelvo una lista.
 	public List<Player> theWorstPlayer() {
 		List<Player> players = getPlayers();
-		List<Player> playersw=new ArrayList<>();
+		List<Player> playersw = new ArrayList<>();
 		playersw.removeAll(playersw);
-		Player theWorst = null;
 		double LowAverage = 100.0;
 		for (Player player : players) {
 			if (player.getAverage() < LowAverage) {
 				LowAverage = player.getAverage();
-				theWorst = player;
+
 			}
 		}
 		for (Player p : players) {
-				if (p.getAverage() == theWorst.getAverage()) {
-					playersw.add(p);
-				}
+			if (p.getAverage() == LowAverage) {
+				playersw.add(p);
 			}
-		
+		}
+
 		return playersw;
 	}
 
